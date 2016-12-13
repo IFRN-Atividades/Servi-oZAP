@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ZipZop">
+  <DataContextMoniker Name="/ZipZopDataContext" />
+  <nestedChildShapes>
+    <classShape Id="282f63f2-ccca-4065-933c-7eaa2d8db806" absoluteBounds="7, 2, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ZipZopDataContext/RelGrupoUsuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7735e597-6301-4fbb-8f87-a21fbc8106c0" absoluteBounds="7.0150000000000006, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="142a4969-504f-47b0-9cbd-29debaad961f" absoluteBounds="0.5, 2, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ZipZopDataContext/GrupoUsuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e673fae3-5192-42ed-8c0d-c21f3d0960da" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.28125); (7 : 2.28125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ZipZopDataContext/GrupoUsuario/GrupoUsuario_RelGrupoUsuario" />
+      <nodes>
+        <classShapeMoniker Id="142a4969-504f-47b0-9cbd-29debaad961f" />
+        <classShapeMoniker Id="282f63f2-ccca-4065-933c-7eaa2d8db806" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3d8defc9-58f3-4f42-a0e9-8af7899a4dd2" absoluteBounds="3.375, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ZipZopDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c1e0b02-60fb-4f14-a25d-d41ac07817c6" absoluteBounds="3.39, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 2.90949625651042); (7 : 2.90949625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ZipZopDataContext/Usuario/Usuario_RelGrupoUsuario" />
+      <nodes>
+        <classShapeMoniker Id="3d8defc9-58f3-4f42-a0e9-8af7899a4dd2" />
+        <classShapeMoniker Id="282f63f2-ccca-4065-933c-7eaa2d8db806" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.375 : 3.00564697265625); (2.5 : 3.00564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ZipZopDataContext/Usuario/Usuario_GrupoUsuario" />
+      <nodes>
+        <classShapeMoniker Id="3d8defc9-58f3-4f42-a0e9-8af7899a4dd2" />
+        <classShapeMoniker Id="142a4969-504f-47b0-9cbd-29debaad961f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
