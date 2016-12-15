@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebServiceZipZop.Controllers
 {
@@ -30,11 +32,18 @@ namespace WebServiceZipZop.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Models.Usuario usuario)
+        
+        public HttpResponseMessage Post([FromBody]Models.Usuario usuario)
         {
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
-            dc.Usuarios.InsertOnSubmit(new Models.Usuario() { Nome = usuario.Nome, Foto = usuario.Foto, Uri = usuario.Uri });
+            dc.Usuarios.InsertOnSubmit(usuario);
             dc.SubmitChanges();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
+            response.Content = new StringContent(usuario.Id.ToString(), Encoding.Unicode);
+            return response;
+
+
         }
 
         // PUT api/values/5
