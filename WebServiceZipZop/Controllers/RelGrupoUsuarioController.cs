@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace WebServiceZipZop.Controllers
@@ -22,6 +23,8 @@ namespace WebServiceZipZop.Controllers
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
             dc.RelGrupoUsuarios.InsertOnSubmit(new Models.RelGrupoUsuario() { Usuario_Id = relgrupousuario.Usuario_Id, GrupoUsuario_Id = relgrupousuario.GrupoUsuario_Id });
             dc.SubmitChanges();
+
+            
         }
 
 

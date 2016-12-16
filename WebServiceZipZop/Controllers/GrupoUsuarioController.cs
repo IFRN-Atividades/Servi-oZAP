@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace WebServiceZipZop.Controllers
@@ -25,11 +26,15 @@ namespace WebServiceZipZop.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Models.GrupoUsuario grupousuario)
+        public HttpResponseMessage Post([FromBody]Models.GrupoUsuario grupousuario)
         {
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
             dc.GrupoUsuarios.InsertOnSubmit(new Models.GrupoUsuario() { Descricao = grupousuario.Descricao, idAdm = grupousuario.idAdm });
             dc.SubmitChanges();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
+            response.Content = new StringContent(grupousuario.Id.ToString(), Encoding.Unicode);
+            return response;
         }
 
         // PUT api/values/5
