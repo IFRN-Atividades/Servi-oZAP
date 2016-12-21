@@ -21,21 +21,18 @@ namespace WebServiceZipZop.Controllers
         public void Post([FromBody]Models.RelGrupoUsuario relgrupousuario)
         {
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
-            dc.RelGrupoUsuarios.InsertOnSubmit(new Models.RelGrupoUsuario() { Usuario_Id = relgrupousuario.Usuario_Id, GrupoUsuario_Id = relgrupousuario.GrupoUsuario_Id });
+            dc.RelGrupoUsuarios.InsertOnSubmit(relgrupousuario);
             dc.SubmitChanges();
-
-            
         }
 
-
         // DELETE api/values/5
-        public void Delete(int usuario_id, int grupousuario_id)
+        [Route("api/relgrupousuario/{usuarioId}/{grupoUsuarioId}")]
+        public void Delete(int usuarioId, int grupoUsuarioId)
         {
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
-            Models.RelGrupoUsuario RelgrupoUsuario = (from f in dc.RelGrupoUsuarios where f.Usuario_Id == usuario_id && f.GrupoUsuario_Id == grupousuario_id select f).Single();
+            Models.RelGrupoUsuario RelgrupoUsuario = (from f in dc.RelGrupoUsuarios where f.Usuario_Id == usuarioId && f.GrupoUsuario_Id == grupoUsuarioId select f).Single();
             dc.RelGrupoUsuarios.DeleteOnSubmit(RelgrupoUsuario);
             dc.SubmitChanges();
         }
-
     }
 }
