@@ -12,8 +12,8 @@ namespace WebServiceZipZop.Controllers
     public class MensagemGrupoController : ApiController
     {
         // GET: api/MensagemGrupo
-        Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
-        private void sendMessage(Models.Mensagem mensagem)
+        //Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
+        private void sendMessage(Models.Mensagem mensagem, string uri)
         {
             Models.Mensagem m = mensagem;
 
@@ -34,7 +34,7 @@ namespace WebServiceZipZop.Controllers
 
             // create a web request that identifies the payload as a toast notification
             // Cria a requisição para a Uri selecionada
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(m.Uri);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.Method = "Post";
             request.ContentType = "text/xml";
             request.ContentLength = msg.Length;
@@ -50,11 +50,11 @@ namespace WebServiceZipZop.Controllers
         }
     
 
-        // GET: api/MensagemGrupo/5
+      /*  // GET: api/MensagemGrupo/5
         public string Get(int id)
         {
             return "value";
-        }
+        }*/
 
         // POST: api/MensagemGrupo
         [Route("api/MensagemGrupo/{grupoUsuarioId}")]
@@ -62,7 +62,10 @@ namespace WebServiceZipZop.Controllers
         {
             Models.ZipZopDataContext dc = new Models.ZipZopDataContext();
             var user_ids = dc.Usuarios.Where(u => u.GrupoUsuarios.Any(gu => gu.Id == grupoUsuarioId));
-
+            foreach (Models.Usuario us in user_ids)
+            {
+                sendMessage(m, us.Uri);
+            }
         }
 
     }
